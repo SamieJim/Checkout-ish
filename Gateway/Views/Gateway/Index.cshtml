@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Gateway Page";
+}
+@model Transaction;
+
+<div class="card mx-auto box-shadow">
+    <div class="card-body">
+        <div class="card-text">Checkout & Pay</div>
+        @using (Html.BeginForm("Pay", "Gateway", FormMethod.Post))
+        {
+            <p>Amount</p>
+            @Html.ValidationSummary(true)
+            @Html.EditorFor(m => m.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+            @Html.EditorFor(m => m.Card)
+            @Html.ValidationMessageFor(model => model.Card)
+            <h1>@ViewData["Message"]</h1>
+            <input type="submit" value="Pay" class="btn-primary"/>
+        }
+    </div>
+</div>
+
+@section  Scripts{
+
+@await Html.PartialAsync("/Views/Shared/_ValidationScriptsPartial.cshtml")
+}
