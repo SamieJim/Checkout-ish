@@ -37,7 +37,7 @@ namespace Payment.Controllers
                 _repository.CreateTransaction(transactionModel);
                 _repository.SaveChanges();
 
-                var response = _mockBank.PaySuccess();
+                var response = _mockBank.PaySuccess(transactionModel.Id);
                 _repository.UpdateTransactionStatus(transactionModel);
                 _repository.SaveChanges();
 

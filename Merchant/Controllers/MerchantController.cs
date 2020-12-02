@@ -32,9 +32,16 @@ namespace Merchant.Controllers
         [Route("GetPayment")]
         public IActionResult GetPayment(string transactionId)
         {
-            Guid id = Guid.Parse(transactionId);
-            if(id == null){
-                ViewBag.Message = "Failed to retrieve!";
+            if(String.IsNullOrEmpty(transactionId)){
+                ViewData.Add("Message", "Id must have a value!");
+                return View("Index");
+            }
+            Guid id;
+            try{
+                id = Guid.Parse(transactionId);
+            }
+            catch{
+                ViewData.Add("Message", "Id must be a GUID!");
                 return View("Index");
             }
             HttpResponseMessage response = new HttpResponseMessage(){StatusCode = HttpStatusCode.BadRequest};
@@ -52,9 +59,19 @@ namespace Merchant.Controllers
                 response = client.GetAsync(uri).Result; 
             }  
             
-            PaymentResponse result = JsonConvert.DeserializeObject<PaymentResponse>(response.Content.ReadAsStringAsync().Result);
-            ViewData.Add("Message", "Payment status of " + "£" + result.Amount + " to " + result.CardNumber + " is " + result.Status);
-            
+            if(response.IsSuccessStatusCode)
+            {
+                try{
+                    PaymentResponse result = JsonConvert.DeserializeObject<PaymentResponse>(response.Content.ReadAsStringAsync().Result);
+                    ViewData.Add("Message", "Payment status of " + "£" + result.Amount + " to " + result.CardNumber + " is " + result.Status);
+                }
+                catch{
+                    ViewData.Add("Message", "Could not retrieve payment");
+                }
+            }
+            else{
+                ViewData.Add("Message", "Could not retrieve payment");
+            }
             return View("Index");
         }
         

@@ -1,13 +1,19 @@
 ﻿@{
     ViewData["Title"] = "Merchant Page";
 }
-<h1>Enter a transaction ID below to check the status of your payment.</h1>
-<form action="/Merchant/GetPayment" method="get">
-    <input type="text" name="transactionId" />
+<div class="card mx-auto box-shadow">
+    <div class="card-body">
+        <h1>Enter a transaction ID below to check the status of your payment.</h1>
+            <form action="/Merchant/GetPayment" method="get">
+                <input type="text" name="transactionId" />
 
-    <input type="submit" value="Search" data-val-required="The ID is required" pattern="/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i" />
-</form>
-<h1>@ViewData["Message"]</h1>
+                <input type="submit" value="Search" data-val-required="The ID is required" pattern="/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i" />
+            </form>
+            <h1>@ViewData["Message"]</h1>
+        </div>
+    </div>
+</div>
+
 
 @section  Scripts{
 

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MockBank.Models;
+using System;
 
 namespace MockBank.Controllers
 {
@@ -7,11 +8,11 @@ namespace MockBank.Controllers
     {
 
         // We are very simply assuming that the bank pays the merchant
-        public ObjectResult PaySuccess()
+        public ObjectResult PaySuccess(Guid id)
         {
             BankResponse success = new BankResponse
             {
-                Id = System.Guid.NewGuid(),
+                Id = id,
                 Status = 2
             };
             return Ok(success);      
