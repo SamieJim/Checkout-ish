@@ -18,11 +18,11 @@ Using Envoy is an excellent way of collecting logs and system information from t
 
 5. As this was a backend task I didnt put large amounts of time into front end design but I have provided a client to call my gateway behind the API gateway - therefore my frontend is basic.
 
-6. For the "bonus points" I have implemented a custom API gateway with Envoy and created a microservice architectureby pairing this with docker-compose.
+6. For the "bonus points" I have implemented a custom API gateway with Envoy and created a microservice architecture by pairing this with docker-compose.
 
-7. My frontend testing basic as this is a backend excercise.
+7. My frontend testing is basic as this is a backend excercise.
 
-8. I had a bug with my urrent culture always being InvariantCulture and so in the end was forced to hard code the symbol, with more time I would have found the error, but decided instead to move on to more important features.
+8. I had a bug with my current culture always being InvariantCulture and so in the end was forced to hard code the symbol, with more time I would have found the error, but decided instead to move on to more important features.
 
 ## Set-up 
 ### Platform
