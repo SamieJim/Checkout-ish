@@ -1,4 +1,4 @@
-# Microservice mesh architecture with an API gateway, using Envoy proxy - Payment gateway.
+# Microservice architecture with an API gateway, using Envoy proxy - Payment gateway.
 ## Description of the system
 
 I have two portals runnning on different ports, one for the merchant to query the transaction DB and the other for the payee to pay. These portals both speak to the API gateway that I have created for ingress only using Envoy. They independently ask the API gateway for the relevant microservice and one is spun up for them, e.g. the payment portal contacts the API gateway to make a transaction, the API gateway uses SSL to retrieve the relevant container over HTTPS, the container is spun up to service transaction requests from that payee.   
